@@ -1,0 +1,109 @@
+<style>
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;  
+}
+
+#table1{
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+#table1 td, th {
+    text-align: left;
+    padding-right: 200px; 
+    padding-left: 10px;
+}
+
+#table2{
+    margin-right: 200px;
+    float: right;
+}
+
+td, th #table2{
+    text-align: center;
+    padding-right: 15px;
+    padding-left: 10px;
+}
+a{
+    text-decoration: none;
+}
+.disable {
+   pointer-events: none;
+   cursor: default;
+   color: grey;
+}
+
+</style>
+
+
+{{!-- <ol>
+    {{#each employee}}
+    <li>{{this.employee_name}}</li>
+    {{/each}}
+</ol> --}}
+<div>
+    <h1 style="text-align: center;"> Employee Table</h1>
+    <table id="table1">
+        <tr style="color: white;background-color: #161680;">
+            <th>Name</th>
+            <th>Id</th>
+            <th>Employee Salary</th>
+            <th>Age</th>
+        </tr>
+        {{#each employee}}
+            <tr>
+                <td>{{this.employee_name}}</td>
+                <td>{{this.id}}</td>
+                <td>{{this.employee_salary}}</td>
+                <td>{{this.employee_age}}</td>
+            </tr>
+        {{/each}}
+    </table>
+
+    <div>
+        <table id="table2">
+            <tr>
+                <td><a href="http://localhost:9000/employeetable/{{prev}}" onclick="valid(event,'prev')" id="prev">Prev</a></td>
+                
+                <td id="1"><a href="http://localhost:9000/employeetable/1">1</a></td>
+                <td id="2"><a href="http://localhost:9000/employeetable/2">2</a></td>
+                <td id="3"><a href="http://localhost:9000/employeetable/3">3</a></td>
+                <td id="4"><a href="http://localhost:9000/employeetable/4">4</a></td>
+
+                <td><a href="http://localhost:9000/employeetable/{{next}}" onclick="valid(event,'next')" id="next">Next</a></td>
+
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<script>
+    
+    var a ={{prev}}+1;
+    var x = document.getElementById(a);
+    x.style.backgroundColor= "yellow";
+
+    function valid(e,p){
+        if (p=='prev' && a=='1' || p=='next' && a=='4'){
+            e.preventDefault();
+            if (a=='1'){
+                var q = document.getElementById('prev');
+                q.className = 'disable';
+            }
+            else if (a=='4'){
+                var q = document.getElementById('next');
+                q.className = 'disable';
+            }
+        }
+        else{
+            var q = document.getElementById('prev');
+            q.className = '';
+        }
+    };
+
+</script>
+
+

@@ -1,0 +1,33 @@
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+
+<h1>Countries Table</h1>
+{{!-- <ol>
+    {{#each employee}}
+    <li>{{this.employee_name}}</li>
+    {{/each}}
+</ol> --}}
+
+<table>
+    <tr style="color: white;background-color: #161680;">
+        <th>Country Name</th>
+        <th>Capital</th>
+        <th>Region</th>
+        <th>Population</th>
+    </tr>
+    {{#each country}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.capital}}</td>
+            <td>{{this.region}}</td>
+            <td>{{this.population}}</td>
+        </tr>
+    {{/each}}
+</table>
+
+<a href="http://localhost:9000/countrytable/{{prev}}">Prev</a>
+<a href="http://localhost:9000/countrytable/{{next}}">Next</a>
